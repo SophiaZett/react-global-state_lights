@@ -1,6 +1,7 @@
 import GlobalStyle from "../styles";
 import Layout from "../components/Layout";
 import { useState } from "react";
+import Lights from "@/components/Lights";
 
 const initialLights = [
   { id: "1", name: "Living Room", isOn: true },
@@ -27,12 +28,11 @@ export default function App({ Component, pageProps }) {
   return (
     <Layout>
       <GlobalStyle />
-      <Component
-        {...pageProps}
-        handleIsOn={handleIsOn}
-        lights={lights}
-        id={lights.id}
-      />
+      <Component {...pageProps} handleIsOn={handleIsOn} lights={lights} />
     </Layout>
   );
 }
+
+// Component
+//         {...pageProps}
+// { Component, pageProps }
