@@ -17,6 +17,8 @@ const initialLights = [
 export default function App({ Component, pageProps }) {
   const [lights, setLights] = useState(initialLights);
 
+  console.log(lights);
+
   function handleIsOn(lightID) {
     setLights(
       lights.map((light) =>
@@ -25,14 +27,23 @@ export default function App({ Component, pageProps }) {
     );
   }
 
+  function handleLightsOff() {
+    setLights(lights.map((light) => ({ ...light, isOn: false })));
+  }
+  function handleLightsOn() {
+    setLights(lights.map((light) => ({ ...light, isOn: true })));
+  }
+
   return (
     <Layout>
       <GlobalStyle />
-      <Component {...pageProps} handleIsOn={handleIsOn} lights={lights} />
+      <Component
+        {...pageProps}
+        handleIsOn={handleIsOn}
+        lights={lights}
+        onLightsOff={handleLightsOff}
+        onLightsOn={handleLightsOn}
+      />
     </Layout>
   );
 }
-
-// Component
-//         {...pageProps}
-// { Component, pageProps }
